@@ -1,7 +1,6 @@
 package com.example.wwwjava.controllers;
 
 import com.example.wwwjava.models.Category;
-import com.example.wwwjava.models.Product;
 import com.example.wwwjava.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package com.example.wwwjava.services;
 
-import com.example.wwwjava.models.Product;
+import com.example.wwwjava.models.ProductDTO;
 import com.example.wwwjava.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,12 +13,12 @@ public class ProductServiceImpl implements ProductService{
     private ProductRepository productRepository;
 
     @Override
-    public Product getProductById(Long id) {
+    public ProductDTO getProductById(Long id) {
         return productRepository.getById(id);
     }
 
     @Override
-    public List<Product> getAllProducts() {
+    public List<ProductDTO> getAllProducts() {
         return productRepository.findAll();
     }
 
@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product saveProduct(Product product) {
+    public ProductDTO saveProduct(ProductDTO product) {
         return productRepository.save(product);
     }
 }

@@ -3,23 +3,33 @@ package com.example.wwwjava.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 @Getter
 @Setter
-@Entity
-@Table(name="products")
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
+    private BigDecimal price;
+    private String categoryName;
+    public Product(ProductDTO product){
+        this.id = product.getId();
+        this.name = product.getName();
+        this.price = product.getPrice();
+        this.categoryName = product.getCategory().getName();
+    }
 
-    private Double price;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id);
+    }
 
-    @ManyToOne
-    @JoinColumn(name="category_id", nullable=false)
-    private Category category;
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

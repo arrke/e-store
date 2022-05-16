@@ -1,15 +1,12 @@
 package com.example.wwwjava.controllers;
 
-import com.example.wwwjava.models.Category;
-import com.example.wwwjava.models.Product;
+import com.example.wwwjava.models.ProductDTO;
 import com.example.wwwjava.services.CategoryService;
 import com.example.wwwjava.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class ProductController {
@@ -27,7 +24,7 @@ public class ProductController {
 
     @GetMapping("/products/new")
     public String addProduct(Model model){
-        Product product = new Product();
+        ProductDTO product = new ProductDTO();
         model.addAttribute("product", product);
         model.addAttribute("categories", categoryService.getAllCategories());
         model.addAttribute("method", "POST");
@@ -35,14 +32,14 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public String saveProduct(@ModelAttribute("product") Product product){
+    public String saveProduct(@ModelAttribute("product") ProductDTO product){
         productService.saveProduct(product);
         return "redirect:/";
     }
 
     @GetMapping("/products/edit/{id}")
     public String editProduct(@PathVariable(value="id") Long id, Model model){
-        Product product = productService.getProductById(id);
+        ProductDTO product = productService.getProductById(id);
         model.addAttribute("product", product);
         model.addAttribute("method", "PUT");
         model.addAttribute("categories", categoryService.getAllCategories());
@@ -50,7 +47,7 @@ public class ProductController {
     }
 
     @PutMapping("/products")
-    public String updateProduct(@ModelAttribute("product") Product product){
+    public String updateProduct(@ModelAttribute("product") ProductDTO product){
         productService.saveProduct(product);
         return "redirect:/";
     }
