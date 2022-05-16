@@ -15,13 +15,14 @@
     <hr>
     <form action="#" th:action="@{/products}" th:object="${product}" th:method="${method}">
         <input th:if="${product.getId() != null}" type="hidden" th:field="*{id}"/>
-        <input type="text" th:field="*{name}" placeholder="First name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{price}" placeholder="Last name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{name}" placeholder="Product name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{price}" placeholder="Price" class="form-control mb-4 col-4">
         <select th:field="*{category}">
             <option th:each="category : ${categories}" th:value="${{category}}" th:text="${category.name}">
             </option>
         </select>
-        <button type="submit" class="btn btn-info col-2">SAVE</button>
+        <button th:if="${categories.size() != 0}" type="submit" class="btn btn-info col-2">SAVE</button>
+        <span th:unless="${categories.size() != 0}">Brakuje kategorii w bazie, nie można utworzyć produktu</span>
     </form>
 </div>
 </body>

@@ -2,9 +2,13 @@ package com.example.wwwjava.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -20,4 +24,8 @@ public class Order {
     private List<OrderItem> items;
 
     private BigDecimal total;
+
+    @Column(name = "timestamp")
+    @CreationTimestamp
+    private Date timestamp;
 }

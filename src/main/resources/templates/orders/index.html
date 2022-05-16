@@ -13,15 +13,15 @@
 <table class = "table table-striped table-responsive-md">
     <thead>
     <th> Order id</th>
+    <th> Created at</th>
     <th>  BUTTONS</th>
 <!--    <th> Product Category name</th>-->
 <!--    <th> Buttons </th>-->
     </thead>
     <tbody>
     <tr th:each="order : ${orders}">
-        <td th:text="${order.getId()}"></td>
-<!--        <td th:text="${product.getPrice()}"></td>-->
-<!--        <td th:text="${product.getCategory().getName()}"></td>-->
+        <td >Order nr:[[${order.getId()}]]</td>
+        <td th:text="${#dates.format(order.getTimestamp(), 'dd-MM-yyyy HH:mm')}"></td>
         <td>
             <a th:href="@{/orders/{id}(id=${order.id})}" class="btn btn-primary"> Show</a>
         </td>

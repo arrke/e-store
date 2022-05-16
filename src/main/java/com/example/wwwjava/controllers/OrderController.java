@@ -40,6 +40,9 @@ public class OrderController {
             Integer quantity = entry.getValue();
             orderItemService.save(new OrderItem(product, quantity, order));
         }
+        order.setTotal(cart.getTotal());
+        orderService.save(order);
+        cart.clearCart();
         return "redirect:/orders";
     }
 
@@ -53,6 +56,7 @@ public class OrderController {
     public String getOrder(@PathVariable(value="id") Long id, Model model){
         Order order = orderService.getOrderById(id);
         model.addAttribute("items", order.getItems());
+        model.addAttribute("order", order);
         return "orders/show";
     }
 }

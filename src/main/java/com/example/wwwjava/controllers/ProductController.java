@@ -1,5 +1,6 @@
 package com.example.wwwjava.controllers;
 
+import com.example.wwwjava.models.Category;
 import com.example.wwwjava.models.ProductDTO;
 import com.example.wwwjava.services.CategoryService;
 import com.example.wwwjava.services.ProductService;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class ProductController {

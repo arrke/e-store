@@ -42,6 +42,10 @@ public class  CartRepository {
         return products;
     }
 
+    public void clearCart(){
+        this.products.clear();
+    }
+
     public BigDecimal getTotal() {
         return products.entrySet().stream()
                 .map(entry -> entry.getKey().getPrice().multiply(BigDecimal.valueOf(entry.getValue())))
