@@ -5,7 +5,10 @@ import com.example.wwwjava.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class CategoryController {
@@ -27,7 +30,12 @@ public class CategoryController {
     }
 
     @PostMapping("/categories")
-    public String saveCategory(@ModelAttribute("category") Category category){
+    public String saveCategory(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("category", category);
+            model.addAttribute("method", "POST");
+            return "categories/form";
+        }
         categoryService.saveCategory(category);
         return "redirect:/categories";
     }
@@ -41,7 +49,12 @@ public class CategoryController {
     }
 
     @PutMapping("/categories")
-    public String updateCategory(@ModelAttribute("category") Category category){
+    public String updateCategory(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult,Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("category", category);
+            model.addAttribute("method", "PUT");
+            return "categories/form";
+        }
         categoryService.saveCategory(category);
         return "redirect:/";
     }

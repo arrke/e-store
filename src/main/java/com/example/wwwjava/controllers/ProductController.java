@@ -7,8 +7,10 @@ import com.example.wwwjava.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -35,7 +37,13 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public String saveProduct(@ModelAttribute("product") ProductDTO product){
+    public String saveProduct(@Valid @ModelAttribute("product") ProductDTO product, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("product", product);
+            model.addAttribute("categories", categoryService.getAllCategories());
+            model.addAttribute("method", "POST");
+            return "products/form";
+        }
         productService.saveProduct(product);
         return "redirect:/";
     }
@@ -50,7 +58,13 @@ public class ProductController {
     }
 
     @PutMapping("/products")
-    public String updateProduct(@ModelAttribute("product") ProductDTO product){
+    public String updateProduct(@Valid @ModelAttribute("product") ProductDTO product, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("product", product);
+            model.addAttribute("categories", categoryService.getAllCategories());
+            model.addAttribute("method", "PUT");
+            return "products/form";
+        }
         productService.saveProduct(product);
         return "redirect:/";
     }
