@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en"xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head th:replace="./index :: headerfiles">
+    <title>SIGN IN</title>
+</head>
+<body>
+<nav th:replace="./index :: navigation"></nav>
+<h1> You are registered now! </h1>
+<a th:href = "@{/login}"  class="btn btn-info btn-sm mb-3"> BACK TO THE MAIN PAGE </a>
+</body>
+</html>

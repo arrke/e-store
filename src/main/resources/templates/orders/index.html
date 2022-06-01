@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>ORDERS</title>
@@ -9,14 +10,13 @@
 
 </head>
 <body>
-<a th:href = "@{/}"  class="btn btn-info btn-sm mb-3">Back to products</a>
+<nav th:replace="./index :: navigation"></nav>
+
 <table class = "table table-striped table-responsive-md">
     <thead>
     <th> Order id</th>
     <th> Created at</th>
     <th>  BUTTONS</th>
-<!--    <th> Product Category name</th>-->
-<!--    <th> Buttons </th>-->
     </thead>
     <tbody>
     <tr th:each="order : ${orders}">
