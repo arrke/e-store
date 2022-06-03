@@ -1,8 +1,8 @@
-package com.example.wwwjava.services;
+package com.example.wwwjava.dao;
 
 import com.example.wwwjava.models.OrderItem;
 
-public interface OrderItemService {
+public interface OrderItemDao {
     public OrderItem save(OrderItem it);
 
 }

@@ -1,9 +1,8 @@
 package com.example.wwwjava.controllers;
 
-import com.example.wwwjava.models.Category;
 import com.example.wwwjava.models.ProductDTO;
-import com.example.wwwjava.services.CategoryService;
-import com.example.wwwjava.services.ProductService;
+import com.example.wwwjava.dao.CategoryDao;
+import com.example.wwwjava.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,16 +10,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class ProductController {
 
     @Autowired
-    private ProductService productService;
+    private ProductDao productService;
 
     @Autowired
-    private CategoryService categoryService;
+    private CategoryDao categoryService;
     @GetMapping("/products")
     public String allProducts(Model model){
         model.addAttribute("listProducts", productService.getAllProducts());

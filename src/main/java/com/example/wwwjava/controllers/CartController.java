@@ -4,7 +4,7 @@ import com.example.wwwjava.models.Product;
 import com.example.wwwjava.models.ProductDTO;
 import com.example.wwwjava.repositories.CartRepository;
 import com.example.wwwjava.repositories.CategoryRepository;
-import com.example.wwwjava.services.ProductService;
+import com.example.wwwjava.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +19,7 @@ public class CartController {
     private CartRepository cart;
 
     @Autowired
-    private ProductService productService;
+    private ProductDao productService;
 
     @Autowired
     private CategoryRepository categoryRepository;

@@ -1,7 +1,7 @@
 package com.example.wwwjava.controllers;
 
 import com.example.wwwjava.models.User;
-import com.example.wwwjava.services.UserService;
+import com.example.wwwjava.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
     @Autowired
-    private UserService userService;
+    private UserDao userService;
     @Autowired private BCryptPasswordEncoder providedEncodere;
 
     @GetMapping("/register")

@@ -1,4 +1,4 @@
-package com.example.wwwjava.services;
+package com.example.wwwjava.dao;
 
 import com.example.wwwjava.models.Category;
 import com.example.wwwjava.repositories.CategoryRepository;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryDaoImpl implements CategoryDao {
     @Autowired
     private CategoryRepository categoryRepository;
 

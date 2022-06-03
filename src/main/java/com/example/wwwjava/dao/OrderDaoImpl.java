@@ -1,4 +1,4 @@
-package com.example.wwwjava.services;
+package com.example.wwwjava.dao;
 
 import com.example.wwwjava.models.Order;
 import com.example.wwwjava.repositories.OrderRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderDaoImpl implements OrderDao {
     @Autowired
     private OrderRepository orderRepository;
 
