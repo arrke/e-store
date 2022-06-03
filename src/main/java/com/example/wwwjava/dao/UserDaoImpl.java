@@ -1,9 +1,9 @@
-package com.example.wwwjava.services;
+package com.example.wwwjava.dao;
 
 import com.example.wwwjava.models.Role;
 import com.example.wwwjava.models.User;
 import com.example.wwwjava.repositories.UserRepository;
-import com.example.wwwjava.services.roles.RoleService;
+import com.example.wwwjava.dao.roles.RoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,14 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserDaoImpl implements UserDao {
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     @Autowired
-    private RoleService roleService;
+    private RoleDao roleService;
 
     @Override
     public Optional<User> getUserById(Long id) {

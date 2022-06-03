@@ -3,12 +3,11 @@ package com.example.wwwjava.controllers;
 import com.example.wwwjava.models.*;
 import com.example.wwwjava.repositories.CartRepository;
 import com.example.wwwjava.repositories.UserRepository;
-import com.example.wwwjava.services.OrderItemService;
-import com.example.wwwjava.services.OrderService;
-import com.example.wwwjava.services.ProductService;
+import com.example.wwwjava.dao.OrderItemDao;
+import com.example.wwwjava.dao.OrderDao;
+import com.example.wwwjava.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 public class OrderController {
@@ -25,13 +23,13 @@ public class OrderController {
     private CartRepository cart;
 
     @Autowired
-    private OrderService orderService;
+    private OrderDao orderService;
 
     @Autowired
-    private ProductService productService;
+    private ProductDao productService;
 
     @Autowired
-    private OrderItemService orderItemService;
+    private OrderItemDao orderItemService;
 
     @Autowired
     private UserRepository userRepository;

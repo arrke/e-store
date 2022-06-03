@@ -1,11 +1,11 @@
-package com.example.wwwjava.services.roles;
+package com.example.wwwjava.dao.roles;
 
 import com.example.wwwjava.models.Role;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface RoleService {
+public interface RoleDao {
     Optional<Role> getUserById(Long id);
     List<Role> getAllUsers();
 

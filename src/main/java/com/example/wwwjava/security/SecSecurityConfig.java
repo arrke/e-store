@@ -48,13 +48,20 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/categories/*").hasAnyRole("ADMIN")
                 .antMatchers("/products").permitAll()
                 .antMatchers("/categories").permitAll()
+                .antMatchers("/h2-console/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
                 .and()
                 .logout().permitAll()
-                .logoutSuccessUrl("/")
-        ;
+                .logoutSuccessUrl("/");
+        http
+                .headers().frameOptions().sameOrigin();
+        http
+                .csrf().disable();
+        http
+                .headers().frameOptions().disable();
+
     }
 
 

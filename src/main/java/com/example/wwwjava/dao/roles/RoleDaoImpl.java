@@ -1,4 +1,4 @@
-package com.example.wwwjava.services.roles;
+package com.example.wwwjava.dao.roles;
 
 import com.example.wwwjava.models.Role;
 import com.example.wwwjava.repositories.RoleRepository;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleDaoImpl implements RoleDao {
     @Autowired
     private RoleRepository roleRepository;
 

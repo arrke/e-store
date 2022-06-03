@@ -1,10 +1,10 @@
-package com.example.wwwjava.services;
+package com.example.wwwjava.dao;
 
 import com.example.wwwjava.models.ProductDTO;
 
 import java.util.List;
 
-public interface ProductService {
+public interface ProductDao {
     public ProductDTO getProductById(Long id);
     public List<ProductDTO> getAllProducts();
     public void deleteProductById(Long id);

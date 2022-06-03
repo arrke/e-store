@@ -3,7 +3,7 @@ package com.example.wwwjava;
 import com.example.wwwjava.models.Role;
 import com.example.wwwjava.models.User;
 import com.example.wwwjava.repositories.UserRepository;
-import com.example.wwwjava.services.roles.RoleService;
+import com.example.wwwjava.dao.roles.RoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +19,7 @@ public class WwwJavaApplication {
     @Autowired
     UserRepository repository;
     @Autowired
-    RoleService roleService;
+    RoleDao roleService;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     public static void main(String[] args) {
