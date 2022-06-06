@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class LoginController {
 
@@ -35,7 +37,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public String processRegister(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
+    public String processRegister(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()){
             model.addAttribute("user", user);
             return "account/register";
