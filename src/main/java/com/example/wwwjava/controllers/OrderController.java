@@ -6,6 +6,7 @@ import com.example.wwwjava.repositories.UserRepository;
 import com.example.wwwjava.dao.OrderItemDao;
 import com.example.wwwjava.dao.OrderDao;
 import com.example.wwwjava.dao.ProductDao;
+import com.example.wwwjava.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,6 +31,8 @@ public class OrderController {
 
     @Autowired
     private OrderItemDao orderItemService;
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private UserRepository userRepository;
@@ -49,6 +52,8 @@ public class OrderController {
         }
         order.setTotal(cart.getTotal());
         orderService.save(order);
+        emailService.sendMail(user.getEmail(), order.getId());
+
         cart.clearCart();
         return "redirect:/orders";
     }
