@@ -13,12 +13,15 @@ public class Product {
     private String name;
     private BigDecimal price;
     private String categoryName;
+
     public Product(ProductDTO product){
         this.id = product.getId();
         this.name = product.getName();
         this.price = product.getPrice();
         this.categoryName = product.getCategory().getName();
     }
+
+
 
     @Override
     public boolean equals(Object o) {
