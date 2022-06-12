@@ -7,6 +7,8 @@ import com.example.wwwjava.dao.OrderItemDao;
 import com.example.wwwjava.dao.OrderDao;
 import com.example.wwwjava.dao.ProductDao;
 import com.example.wwwjava.services.EmailService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +22,8 @@ import java.util.Set;
 
 @Controller
 public class OrderController {
+    private static Logger logger = LoggerFactory.getLogger(OrderController.class);
+
     @Autowired
     private CartRepository cart;
 
@@ -52,15 +56,19 @@ public class OrderController {
         }
         order.setTotal(cart.getTotal());
         orderService.save(order);
+        logger.info("order saved");
         emailService.sendMail(user.getEmail(), order.getId());
+        logger.info("email sendes to admin");
 
         cart.clearCart();
+        logger.info("cart cleared");
         return "redirect:/orders";
     }
 
     @GetMapping("/orders")
     public String getAllOrders(Model model){
         model.addAttribute("orders", getCurrentUser().getOrders());
+        logger.info("get all orders method in use");
         return "orders/index";
     }
 
@@ -70,6 +78,7 @@ public class OrderController {
         Order order = orders.stream().filter(order1 -> order1.getId() == id).findFirst().get();
         model.addAttribute("items", order.getItems());
         model.addAttribute("order", order);
+        logger.info("get specific order");
         return "orders/show";
     }
 
@@ -77,6 +86,7 @@ public class OrderController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         User user = userRepository.getUserByUsername(currentPrincipalName);
+        logger.info("get uder method in use");
         return user;
     }
 }
