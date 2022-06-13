@@ -11,27 +11,27 @@
     <form class="align-self-center" action="#" th:action="@{/register}" th:object="${user}" method="POST" enctype="utf8">
         <div>
             <label>First name</label>
-            <input th:field="*{firstName}" class="form-control"/>
+            <input th:field="*{firstName}" class="form-control" th:errorClass="is-invalid"/>
             <p th:each="error: ${#fields.errors('firstName')}"
-               th:text="${error}">Validation error</p>
+               th:text="${error}" th:error="*{firstName}" class="invalid-feedback">Validation error</p>
         </div>
         <div>
             <label>Last name</label>
-            <input th:field="*{lastName}" class="form-control"/>
+            <input th:field="*{lastName}" class="form-control" th:errorClass="is-invalid"/>
             <p th:each="error : ${#fields.errors('lastName')}"
-               th:text="${error}">Validation error</p>
+               th:text="${error}" th:error="*{lastName}" class="invalid-feedback">Validation error</p>
         </div>
         <div>
             <label>Username</label>
-            <input type="email" th:field="*{email}" class="form-control"/>
+            <input type="email" th:field="*{email}" class="form-control" th:errorClass="is-invalid"/>
             <p th:each="error : ${#fields.errors('email')}"
-               th:text="${error}">Validation error</p>
+               th:text="${error}" th:error="*{email}" class="invalid-feedback">Validation error</p>
         </div>
         <div>
             <label>Password</label>
-            <input type="password" th:field="*{password}" class="form-control"/>
+            <input type="password" th:field="*{password}" class="form-control" th:errorClass="is-invalid"/>
             <p th:each="error : ${#fields.errors('password')}"
-               th:text="${error}">Validation error</p>
+               th:text="${error}" th:error="*{password}" class="invalid-feedback">Validation error</p>
         </div>
         <button type="submit" class="btn btn-info w-100">SAVE</button>
         <a th:href="@{/login.html}" class="p-3">Masz konto? Zaloguj się! </a>

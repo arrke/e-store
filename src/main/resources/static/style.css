@@ -3,3 +3,8 @@
     color: red;
     font-weight: bold;
 }
+.invalid-feedback{
+    text-transform: capitalize;
+    color: red;
+    font-weight: bold;
+}
