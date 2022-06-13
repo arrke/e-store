@@ -2,6 +2,8 @@ package com.example.wwwjava.controllers;
 
 import com.example.wwwjava.models.Category;
 import com.example.wwwjava.dao.CategoryDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +14,15 @@ import javax.validation.Valid;
 
 @Controller
 public class CategoryController {
+    private static Logger logger = LoggerFactory.getLogger(CategoryController.class);
+
     @Autowired
     private CategoryDao categoryService;
 
     @GetMapping("/categories")
     public String index(Model model){
         model.addAttribute("categoryList", categoryService.getAllCategories());
+        logger.info("show list od categories");
         return "categories/index";
     }
 
@@ -26,6 +31,8 @@ public class CategoryController {
         Category category = new Category();
         model.addAttribute("category", category);
         model.addAttribute("method", "POST");
+        logger.info("category added");
+
         return "categories/form";
     }
 
@@ -34,6 +41,7 @@ public class CategoryController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("category", category);
             model.addAttribute("method", "POST");
+            logger.error("error in saving category");
             return "categories/form";
         }
         categoryService.saveCategory(category);
@@ -45,6 +53,7 @@ public class CategoryController {
         Category category = categoryService.getCategoryById(id);
         model.addAttribute("category", category);
         model.addAttribute("method", "PUT");
+        logger.info("category update in get method");
         return "categories/form";
     }
 
@@ -53,15 +62,21 @@ public class CategoryController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("category", category);
             model.addAttribute("method", "PUT");
+            logger.info("category updated in post method");
+
             return "categories/form";
         }
         categoryService.saveCategory(category);
+        logger.info("category saved");
+
         return "redirect:/";
     }
 
     @GetMapping("/categories/delete/{id}")
     public String deleteCategory(@PathVariable(value="id") Long id, Model model){
         categoryService.deleteCategoryById(id);
+        logger.info("category deleted");
+
         return "redirect:/categories";
     }
 }

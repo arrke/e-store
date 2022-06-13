@@ -5,6 +5,8 @@ import com.example.wwwjava.models.ProductDTO;
 import com.example.wwwjava.repositories.CartRepository;
 import com.example.wwwjava.repositories.CategoryRepository;
 import com.example.wwwjava.dao.ProductDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,8 @@ import java.util.Map;
 
 @Controller
 public class CartController {
+
+    private static Logger logger = LoggerFactory.getLogger(CartController.class);
     @Autowired
     private CartRepository cart;
 
@@ -29,6 +33,7 @@ public class CartController {
         ProductDTO productDTO = productService.getProductById(id);
         Product product = new Product(productDTO);
         cart.addProduct(product);
+        logger.info("added to cart");
         return "redirect:/";
     }
 
@@ -37,6 +42,8 @@ public class CartController {
         ProductDTO productDTO = productService.getProductById(id);
         Product product = new Product(productDTO);
         cart.removeProduct(product);
+        logger.info("removed from cart");
+
         return "redirect:/cart";
     }
     @GetMapping("/cart")
@@ -44,6 +51,7 @@ public class CartController {
         Map<Product, Integer> products =  cart.getProductsInCart();
         model.addAttribute("products",products);
         model.addAttribute("totalPrice", cart.getTotal().toString());
+        logger.info("cart show");
         return "cart/index";
     }
 
