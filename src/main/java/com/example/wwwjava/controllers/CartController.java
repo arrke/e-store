@@ -4,7 +4,7 @@ import com.example.wwwjava.models.Product;
 import com.example.wwwjava.models.ProductDTO;
 import com.example.wwwjava.repositories.CartRepository;
 import com.example.wwwjava.repositories.CategoryRepository;
-import com.example.wwwjava.dao.ProductDao;
+import com.example.wwwjava.services.product.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class CartController {
     private CartRepository cart;
 
     @Autowired
-    private ProductDao productService;
+    private ProductService productService;
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -43,7 +43,6 @@ public class CartController {
         Product product = new Product(productDTO);
         cart.removeProduct(product);
         logger.info("removed from cart");
-
         return "redirect:/cart";
     }
     @GetMapping("/cart")

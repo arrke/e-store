@@ -1,4 +1,4 @@
-package com.example.wwwjava.dao;
+package com.example.wwwjava.services.product;
 
 import com.example.wwwjava.models.ProductDTO;
 import com.example.wwwjava.repositories.ProductRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductDaoImpl implements ProductDao {
+public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 

@@ -1,4 +1,4 @@
-package com.example.wwwjava.dao;
+package com.example.wwwjava.services.order_items;
 
 import com.example.wwwjava.models.OrderItem;
 import com.example.wwwjava.repositories.OrderItemRepository;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderItemDaoImpl implements OrderItemDao {
+public class OrderItemServiceImpl implements OrderItemService {
 
     @Autowired
     private OrderItemRepository orderItemRepository;

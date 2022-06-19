@@ -1,10 +1,10 @@
-package com.example.wwwjava.dao;
+package com.example.wwwjava.services.categories;
 
 import com.example.wwwjava.models.Category;
 
 import java.util.List;
 
-public interface CategoryDao {
+public interface CategoryService {
     public Category getCategoryById(Long id);
     public List<Category> getAllCategories();
     public void deleteCategoryById(Long id);

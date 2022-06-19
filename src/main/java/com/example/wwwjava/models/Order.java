@@ -20,7 +20,7 @@ public class Order {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy="order")
+    @OneToMany(mappedBy="order", fetch = FetchType.EAGER)
     private List<OrderItem> items;
 
     private BigDecimal total;
@@ -28,4 +28,14 @@ public class Order {
     @Column(name = "timestamp")
     @CreationTimestamp
     private Date timestamp;
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", items=" + items +
+                ", total=" + total +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }

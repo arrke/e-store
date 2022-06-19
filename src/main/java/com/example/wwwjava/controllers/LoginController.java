@@ -1,7 +1,7 @@
 package com.example.wwwjava.controllers;
 
 import com.example.wwwjava.models.User;
-import com.example.wwwjava.dao.UserDao;
+import com.example.wwwjava.services.users.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class LoginController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
     @Autowired
-    private UserDao userService;
+    private UserService userService;
     @Autowired private BCryptPasswordEncoder providedEncodere;
 
     @GetMapping("/register")

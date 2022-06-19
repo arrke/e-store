@@ -1,10 +1,10 @@
-package com.example.wwwjava.dao;
+package com.example.wwwjava.services.orders;
 
 import com.example.wwwjava.models.Order;
 
 import java.util.List;
 
-public interface OrderDao {
+public interface OrderService {
     public Order getOrderById(Long id);
 
     public List<Order> getAllOrders();

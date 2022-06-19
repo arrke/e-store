@@ -1,7 +1,7 @@
 package com.example.wwwjava.controllers;
 
 import com.example.wwwjava.models.Category;
-import com.example.wwwjava.dao.CategoryDao;
+import com.example.wwwjava.services.categories.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class CategoryController {
     private static Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     @Autowired
-    private CategoryDao categoryService;
+    private CategoryService categoryService;
 
     @GetMapping("/categories")
     public String index(Model model){

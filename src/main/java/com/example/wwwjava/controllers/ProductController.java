@@ -1,8 +1,8 @@
 package com.example.wwwjava.controllers;
 
 import com.example.wwwjava.models.ProductDTO;
-import com.example.wwwjava.dao.CategoryDao;
-import com.example.wwwjava.dao.ProductDao;
+import com.example.wwwjava.services.categories.CategoryService;
+import com.example.wwwjava.services.product.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ public class ProductController {
     private static Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
-    private ProductDao productService;
+    private ProductService productService;
 
     @Autowired
-    private CategoryDao categoryService;
+    private CategoryService categoryService;
     @GetMapping("/products")
     public String allProducts(Model model){
         model.addAttribute("listProducts", productService.getAllProducts());

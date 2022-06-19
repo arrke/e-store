@@ -3,9 +3,9 @@ package com.example.wwwjava.controllers;
 import com.example.wwwjava.models.*;
 import com.example.wwwjava.repositories.CartRepository;
 import com.example.wwwjava.repositories.UserRepository;
-import com.example.wwwjava.dao.OrderItemDao;
-import com.example.wwwjava.dao.OrderDao;
-import com.example.wwwjava.dao.ProductDao;
+import com.example.wwwjava.services.order_items.OrderItemService;
+import com.example.wwwjava.services.orders.OrderService;
+import com.example.wwwjava.services.product.ProductService;
 import com.example.wwwjava.services.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,13 +28,13 @@ public class OrderController {
     private CartRepository cart;
 
     @Autowired
-    private OrderDao orderService;
+    private OrderService orderService;
 
     @Autowired
-    private ProductDao productService;
+    private ProductService productService;
 
     @Autowired
-    private OrderItemDao orderItemService;
+    private OrderItemService orderItemService;
     @Autowired
     private EmailService emailService;
 

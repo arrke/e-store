@@ -1,4 +1,4 @@
-package com.example.wwwjava.dao.roles;
+package com.example.wwwjava.services.roles;
 
 import com.example.wwwjava.models.Role;
 import com.example.wwwjava.repositories.RoleRepository;
@@ -9,27 +9,27 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RoleDaoImpl implements RoleDao {
+public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
     @Override
-    public Optional<Role> getUserById(Long id) {
+    public Optional<Role> getRoleById(Long id) {
         return roleRepository.findById(id);
     }
 
     @Override
-    public List<Role> getAllUsers() {
+    public List<Role> getAllRoles() {
         return roleRepository.findAll();
     }
 
     @Override
-    public Role saveUser(Role role) {
+    public Role saveRole(Role role) {
         return roleRepository.save(role);
     }
 
     @Override
-    public void deleteUserById(Long id) {
+    public void deleteRoleById(Long id) {
         roleRepository.deleteById(id);
     }
 

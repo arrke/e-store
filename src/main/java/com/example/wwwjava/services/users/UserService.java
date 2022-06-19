@@ -1,11 +1,11 @@
-package com.example.wwwjava.dao;
+package com.example.wwwjava.services.users;
 
 import com.example.wwwjava.models.User;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserDao {
+public interface UserService {
     Optional<User> getUserById(Long id);
     List<User> getAllUsers();
 
